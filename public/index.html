@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MCP Tool Inspector</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace">
+        <header class="masthead">
+          <div>
+            <p class="eyebrow">MCP Tool Inspector</p>
+            <h1>Inspect a server's tools and input parameters.</h1>
+          </div>
+          <div class="status-pill" id="statusPill">Idle</div>
+        </header>
+
+        <form class="inspect-form" id="inspectForm">
+          <label for="serverUrl">MCP server URL</label>
+          <div class="input-row">
+            <input
+              id="serverUrl"
+              name="serverUrl"
+              type="url"
+              placeholder="https://example.com/mcp"
+              autocomplete="url"
+              required
+            />
+            <button type="submit" id="inspectButton">
+              <span>Inspect</span>
+            </button>
+          </div>
+        </form>
+
+        <section class="meta-bar" id="metaBar" hidden>
+          <div>
+            <span class="meta-label">Transport</span>
+            <strong id="transportValue">-</strong>
+          </div>
+          <div>
+            <span class="meta-label">Protocol</span>
+            <strong id="protocolValue">-</strong>
+          </div>
+          <div>
+            <span class="meta-label">Tools</span>
+            <strong id="toolCountValue">0</strong>
+          </div>
+        </section>
+
+        <section class="results" id="results">
+          <div class="empty-state" id="emptyState">
+            <h2>No server inspected yet</h2>
+            <p>Paste a Streamable HTTP or legacy SSE MCP endpoint to list its available tools.</p>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <template id="toolTemplate">
+      <article class="tool-card">
+        <div class="tool-header">
+          <div>
+            <h2 class="tool-name"></h2>
+            <p class="tool-description"></p>
+          </div>
+          <span class="param-count"></span>
+        </div>
+        <div class="schema-wrap"></div>
+      </article>
+    </template>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
